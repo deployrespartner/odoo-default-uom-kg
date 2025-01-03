@@ -1,13 +1,15 @@
 {
-    'name': 'Default UoM Kilogram',
+    'name': 'Default Product UoM Configuration',
     'version': '17.0.1.0.0',
     'category': 'Product',
-    'summary': 'Set default UoM to KG for all products',
+    'summary': 'Configure default UoM for each product type',
     'description': '''
-Default UoM Kilogram
-===================
-This module sets the default Unit of Measure to Kilogram (kg) for all products,
-regardless of their detailed_type value.
+Default Product UoM Configuration
+===============================
+This module allows to configure the default Unit of Measure for each product type:
+- Storable Products
+- Consumable Products
+- Services
     ''',
     'author': 'Your Company',
     'website': 'https://www.yourcompany.com',
