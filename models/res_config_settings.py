@@ -7,15 +7,15 @@ class ResConfigSettings(models.TransientModel):
     default_uom_product = fields.Many2one(
         'uom.uom',
         string='Default UoM for Storable Products',
-        config_parameter='default_uom_kg.default_uom_product'
+        config_parameter='product_default_uom.default_uom_product'
     )
     default_uom_consu = fields.Many2one(
         'uom.uom',
         string='Default UoM for Consumable Products',
-        config_parameter='default_uom_kg.default_uom_consu'
+        config_parameter='product_default_uom.default_uom_consu'
     )
     default_uom_service = fields.Many2one(
         'uom.uom',
         string='Default UoM for Services',
-        config_parameter='default_uom_kg.default_uom_service'
+        config_parameter='product_default_uom.default_uom_service'
     )

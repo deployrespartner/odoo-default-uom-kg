@@ -9,13 +9,13 @@ class ProductTemplate(models.Model):
         
         # Récupération des paramètres en fonction du type
         if default_type == 'service':
-            uom_id = int(ICP.get_param('default_uom_kg.default_uom_service', 
+            uom_id = int(ICP.get_param('product_default_uom.default_uom_service', 
                                      self.env.ref('uom.product_uom_unit').id))
         elif default_type == 'product':
-            uom_id = int(ICP.get_param('default_uom_kg.default_uom_product', 
+            uom_id = int(ICP.get_param('product_default_uom.default_uom_product', 
                                      self.env.ref('uom.product_uom_kgm').id))
         else:  # consu
-            uom_id = int(ICP.get_param('default_uom_kg.default_uom_consu', 
+            uom_id = int(ICP.get_param('product_default_uom.default_uom_consu', 
                                      self.env.ref('uom.product_uom_kgm').id))
         
         return self.env['uom.uom'].browse(uom_id)
@@ -34,13 +34,13 @@ class ProductTemplate(models.Model):
         
         if self.detailed_type == 'service':
             self.invoice_policy = 'order'
-            uom_id = int(ICP.get_param('default_uom_kg.default_uom_service', 
+            uom_id = int(ICP.get_param('product_default_uom.default_uom_service', 
                                      self.env.ref('uom.product_uom_unit').id))
         elif self.detailed_type == 'product':
-            uom_id = int(ICP.get_param('default_uom_kg.default_uom_product', 
+            uom_id = int(ICP.get_param('product_default_uom.default_uom_product', 
                                      self.env.ref('uom.product_uom_kgm').id))
         else:  # consu
-            uom_id = int(ICP.get_param('default_uom_kg.default_uom_consu', 
+            uom_id = int(ICP.get_param('product_default_uom.default_uom_consu', 
                                      self.env.ref('uom.product_uom_kgm').id))
         
         uom = self.env['uom.uom'].browse(uom_id)

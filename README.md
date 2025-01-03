@@ -43,9 +43,9 @@ Une fois configuré :
 ## Notes techniques
 
 - Les paramètres sont stockés dans `ir.config_parameter` sous les clés :
-  - `default_uom_kg.default_uom_product`
-  - `default_uom_kg.default_uom_consu`
-  - `default_uom_kg.default_uom_service`
+  - `product_default_uom.default_uom_product`
+  - `product_default_uom.default_uom_consu`
+  - `product_default_uom.default_uom_service`
 - Le module surcharge les méthodes suivantes du modèle `product.template` :
   - `_get_default_uom_id` : pour la valeur par défaut à la création
   - `_onchange_detailed_type` : pour la mise à jour lors du changement de type
