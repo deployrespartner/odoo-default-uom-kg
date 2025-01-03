@@ -4,13 +4,22 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     def _get_default_uom_id(self):
-        # Si le contexte indique que c'est un service, on utilise l'unité
-        if self.env.context.get('default_detailed_type') == 'service':
-            return self.env.ref('uom.product_uom_unit')
-        # Pour les produits stockables et consommables, on utilise kg
-        return self.env.ref('uom.product_uom_kgm')
+        ICP = self.env['ir.config_parameter'].sudo()
+        default_type = self.env.context.get('default_detailed_type', 'consu')
+        
+        # Récupération des paramètres en fonction du type
+        if default_type == 'service':
+            uom_id = int(ICP.get_param('default_uom_kg.default_uom_service', 
+                                     self.env.ref('uom.product_uom_unit').id))
+        elif default_type == 'product':
+            uom_id = int(ICP.get_param('default_uom_kg.default_uom_product', 
+                                     self.env.ref('uom.product_uom_kgm').id))
+        else:  # consu
+            uom_id = int(ICP.get_param('default_uom_kg.default_uom_consu', 
+                                     self.env.ref('uom.product_uom_kgm').id))
+        
+        return self.env['uom.uom'].browse(uom_id)
 
-    # Surcharge du champ pour utiliser notre nouvelle méthode par défaut
     uom_id = fields.Many2one(
         'uom.uom',
         'Unit of Measure',
@@ -21,10 +30,18 @@ class ProductTemplate(models.Model):
 
     @api.onchange('detailed_type')
     def _onchange_detailed_type(self):
-        # On reprend la logique d'origine pour les services
+        ICP = self.env['ir.config_parameter'].sudo()
+        
         if self.detailed_type == 'service':
             self.invoice_policy = 'order'
-            self.uom_id = self.uom_po_id = self.env.ref('uom.product_uom_unit')
-        # Pour les consommables et stockables, on force en kg
-        elif self.detailed_type in ['consu', 'product']:
-            self.uom_id = self.uom_po_id = self.env.ref('uom.product_uom_kgm')
+            uom_id = int(ICP.get_param('default_uom_kg.default_uom_service', 
+                                     self.env.ref('uom.product_uom_unit').id))
+        elif self.detailed_type == 'product':
+            uom_id = int(ICP.get_param('default_uom_kg.default_uom_product', 
+                                     self.env.ref('uom.product_uom_kgm').id))
+        else:  # consu
+            uom_id = int(ICP.get_param('default_uom_kg.default_uom_consu', 
+                                     self.env.ref('uom.product_uom_kgm').id))
+        
+        uom = self.env['uom.uom'].browse(uom_id)
+        self.uom_id = self.uom_po_id = uom

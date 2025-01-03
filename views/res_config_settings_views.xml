@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.default.uom</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="product.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='product_general_settings']" position="inside">
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="default_uom_product"/>
+                            <div class="text-muted">
+                                Default unit of measure for storable products
+                            </div>
+                            <div class="mt8">
+                                <field name="default_uom_product"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="default_uom_consu"/>
+                            <div class="text-muted">
+                                Default unit of measure for consumable products
+                            </div>
+                            <div class="mt8">
+                                <field name="default_uom_consu"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <label for="default_uom_service"/>
+                            <div class="text-muted">
+                                Default unit of measure for services
+                            </div>
+                            <div class="mt8">
+                                <field name="default_uom_service"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
