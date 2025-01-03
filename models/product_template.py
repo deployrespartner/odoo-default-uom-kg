@@ -11,11 +11,11 @@ class ProductTemplate(models.Model):
         # Si uom_id est dans la liste des champs demandés
         if 'uom_id' in fields_list:
             # Définir l'unité de mesure par défaut à kg (ID: 12)
-            defaults['uom_id'] = 12
+            defaults['uom_id'] = 3
             
             # Si uom_po_id est aussi dans la liste, on le met également à kg
             if 'uom_po_id' in fields_list:
-                defaults['uom_po_id'] = 12
+                defaults['uom_po_id'] = 3
                 
         return defaults
 
