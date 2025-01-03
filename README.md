@@ -1,4 +1,4 @@
-# Default UoM Configuration for Odoo 17
+# Default Product UoM Configuration for Odoo 17
 
 Ce module permet de configurer l'unité de mesure par défaut pour chaque type de produit dans Odoo.
 
@@ -18,16 +18,16 @@ Ce module permet de configurer l'unité de mesure par défaut pour chaque type d
 
 1. Clonez ce dépôt dans votre répertoire addons Odoo :
 ```bash
-git clone https://github.com/deployrespartner/odoo-default-uom-kg.git
+git clone https://github.com/deployrespartner/odoo-default-uom-kg.git product_default_uom_config
 ```
 
 2. Mettez à jour la liste des modules dans Odoo
-3. Installez le module 'Default UoM Kilogram'
+3. Installez le module 'Default Product UoM Configuration'
 
 ## Configuration
 
-1. Allez dans Configuration > Paramètres
-2. Dans la section "Inventory", vous trouverez les paramètres suivants :
+1. Allez dans Configuration > Paramètres > Inventory
+2. Vous trouverez les paramètres suivants :
    - "Default UoM for Storable Products" : UoM par défaut pour les produits stockables
    - "Default UoM for Consumable Products" : UoM par défaut pour les produits consommables
    - "Default UoM for Services" : UoM par défaut pour les services
